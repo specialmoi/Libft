@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putdec.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pthiruma <pthiruma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 15:46:41 by pthiruma          #+#    #+#             */
-/*   Updated: 2023/02/09 13:53:44 by pthiruma         ###   ########.fr       */
+/*   Created: 2023/01/09 13:32:14 by pthiruma          #+#    #+#             */
+/*   Updated: 2023/01/09 19:04:50 by pthiruma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putdec(int i, int *len)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	char	c;
-
-	if (i == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		(*len) += 11;
+	if (!lst)
 		return ;
-	}
-	if (i < 0)
-	{
-		ft_putchar('-', len);
-		i *= -1;
-	}
-	if (i > 9)
-		ft_putdec_u(i / 10, len);
-	c = i % 10 + 48;
-	ft_putchar(c, len);
+	(*del)(lst->content);
+	free (lst);
 }

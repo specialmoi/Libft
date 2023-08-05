@@ -6,7 +6,7 @@
 /*   By: pthiruma <pthiruma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:58:50 by pthiruma          #+#    #+#             */
-/*   Updated: 2023/07/07 11:45:19 by pthiruma         ###   ########.fr       */
+/*   Updated: 2023/02/09 13:49:00 by pthiruma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	ft_format(va_list args, char s, int *len)
 		ft_putstr(va_arg(args, char *), len);
 	if (s == 'd' || s == 'i')
 		ft_putdec(va_arg(args, int), len);
-	if (s == 'l')
-		ft_putlong(va_arg(args, long), len);
 	if (s == 'u')
 		ft_putdec_u(va_arg(args, unsigned int), len);
 	if (s == 'x')
@@ -47,7 +45,7 @@ int	ft_printf(const char *s, ...)
 	va_start(args, s);
 	while (s[i] != '\0')
 	{
-		if (s[i] == '%' && ft_strchr("cspdiuxXly%", s[i + 1]))
+		if (s[i] == '%' && ft_strchr("cspdiuxX%", s[i + 1]))
 		{
 			ft_format(args, s[i + 1], &len);
 			i++;

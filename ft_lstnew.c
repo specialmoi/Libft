@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putdec.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pthiruma <pthiruma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 15:46:41 by pthiruma          #+#    #+#             */
-/*   Updated: 2023/02/09 13:53:44 by pthiruma         ###   ########.fr       */
+/*   Created: 2023/01/05 19:04:40 by pthiruma          #+#    #+#             */
+/*   Updated: 2023/01/09 19:11:37 by pthiruma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putdec(int i, int *len)
+t_list	*ft_lstnew(void *content)
 {
-	char	c;
+	t_list	*head;
 
-	if (i == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		(*len) += 11;
-		return ;
-	}
-	if (i < 0)
-	{
-		ft_putchar('-', len);
-		i *= -1;
-	}
-	if (i > 9)
-		ft_putdec_u(i / 10, len);
-	c = i % 10 + 48;
-	ft_putchar(c, len);
+	head = malloc(sizeof(t_list));
+	if (!head)
+		return (NULL);
+	head -> content = content;
+	head -> next = NULL;
+	return (head);
 }

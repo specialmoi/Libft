@@ -6,15 +6,15 @@
 /*   By: pthiruma <pthiruma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:37:42 by pthiruma          #+#    #+#             */
-/*   Updated: 2023/07/13 13:25:06 by pthiruma         ###   ########.fr       */
+/*   Updated: 2022/12/25 13:27:10 by pthiruma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long	ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr)
 {
-	long			num;
+	unsigned int	num;
 	int				i;
 	int				sign;
 
@@ -32,5 +32,5 @@ long	ft_atoi(const char *nptr)
 		num = num * 10 + (nptr[i] - '0');
 		i++;
 	}
-	return ((long)(sign * num));
+	return ((int)(sign * num));
 }

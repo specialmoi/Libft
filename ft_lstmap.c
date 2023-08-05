@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putdec.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pthiruma <pthiruma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 15:46:41 by pthiruma          #+#    #+#             */
-/*   Updated: 2023/02/09 13:53:44 by pthiruma         ###   ########.fr       */
+/*   Created: 2023/01/09 17:20:36 by pthiruma          #+#    #+#             */
+/*   Updated: 2023/01/09 19:16:19 by pthiruma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putdec(int i, int *len)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char	c;
+	t_list	*new_elem;
+	t_list	*new_list;
 
-	if (i == -2147483648)
+	if (!f || !del)
+		return (NULL);
+	new_list = NULL;
+	while (lst)
 	{
-		write(1, "-2147483648", 11);
-		(*len) += 11;
-		return ;
+		new_elem = ft_lstnew((*f)(lst->content));
+		if (!new_elem)
+		{
+			ft_lstclear(&new_list, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new_list, new_elem);
+		lst = lst->next;
 	}
-	if (i < 0)
-	{
-		ft_putchar('-', len);
-		i *= -1;
-	}
-	if (i > 9)
-		ft_putdec_u(i / 10, len);
-	c = i % 10 + 48;
-	ft_putchar(c, len);
+	return (new_list);
 }

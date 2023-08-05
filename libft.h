@@ -6,31 +6,17 @@
 /*   By: pthiruma <pthiruma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 08:37:45 by pthiruma          #+#    #+#             */
-/*   Updated: 2023/07/26 11:28:59 by pthiruma         ###   ########.fr       */
+/*   Updated: 2023/02/09 13:56:10 by pthiruma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
-# endif
-
-// memory allocation, random number generation, sorting - malloc, free, rand, atoi
 # include <stdlib.h>
-//  input and output operations -  printf, scanf, fopen, fclose
 # include <stdio.h>
-//  system calls and constants for POSIX operating systems - write, read, close
 # include <unistd.h>
-// variable argument lists in functions - printf and scanf
-# include <stdarg.h>
-// standard types and macros -  size_t, NULL
-# include <stddef.h>
-//  file control options for handling file descriptors - open, close, read, write
-# include <fcntl.h>
 
-//libft
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int x);
@@ -59,7 +45,7 @@ char	*ft_strdup(const char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 
-long	ft_atoi(const char *nptr);
+int		ft_atoi(const char *nptr);
 char	*ft_itoa(int n);
 void	ft_bzero(void *s, size_t n);
 char	**ft_split(char const *s, char c);
@@ -70,15 +56,29 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
-//printf
-int		ft_printf(const char *s, ...);
-void	ft_putdec(int i, int *len);
-void	ft_putlong(long ld, int *len);
-void	ft_putstr(char *s, int *len);
-void	ft_putchar(char c, int *len);
-void	ft_putdec_u(unsigned int i, int *len);
-void	ft_putlong_u(unsigned long lu, int *len);
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
+
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstdelone(t_list *lst, void (*del)(void*));
+void	ft_lstclear(t_list **lst, void (*del)(void*));
+void	ft_lstiter(t_list *lst, void (*f)(void *));
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+void	ft_format(va_list args, char s, int *len);
+int	ft_printf(const char *s, ...);
 void	ft_hex(unsigned int i, int *len, char y);
 void	ft_ptr(unsigned long i, int *len);
+void	ft_putchar(char c, int *len);
+void	ft_putdec(int i, int *len);
+void	ft_putdec_u(unsigned int i, int *len);
+void	ft_putstr(char *s, int *len);
 
 #endif
