@@ -6,19 +6,31 @@
 /*   By: pthiruma <pthiruma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 08:37:45 by pthiruma          #+#    #+#             */
-/*   Updated: 2023/07/13 13:25:37 by pthiruma         ###   ########.fr       */
+/*   Updated: 2023/07/26 11:28:59 by pthiruma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <stddef.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
 
+// memory allocation, random number generation, sorting - malloc, free, rand, atoi
+# include <stdlib.h>
+//  input and output operations -  printf, scanf, fopen, fclose
+# include <stdio.h>
+//  system calls and constants for POSIX operating systems - write, read, close
+# include <unistd.h>
+// variable argument lists in functions - printf and scanf
+# include <stdarg.h>
+// standard types and macros -  size_t, NULL
+# include <stddef.h>
+//  file control options for handling file descriptors - open, close, read, write
+# include <fcntl.h>
+
+//libft
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int x);
@@ -58,7 +70,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
-//printf stuff
+//printf
 int		ft_printf(const char *s, ...);
 void	ft_putdec(int i, int *len);
 void	ft_putlong(long ld, int *len);
@@ -68,6 +80,5 @@ void	ft_putdec_u(unsigned int i, int *len);
 void	ft_putlong_u(unsigned long lu, int *len);
 void	ft_hex(unsigned int i, int *len, char y);
 void	ft_ptr(unsigned long i, int *len);
-// char	*ft_strchr_printf(const char *s, int c);
 
 #endif
