@@ -1,0 +1,149 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    codeexplanations                                   :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: pthiruma <pthiruma@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/12/25 11:53:59 by pthiruma          #+#    #+#              #
+#    Updated: 2023/01/06 14:26:21 by pthiruma         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+ft_strnstr.c
+search for little in big. config: 1.check if little exits, if not return dst ptr 2.under len size and big exists
+3.check if big(i+j)equal to little(j) and if less len and increment. 3.if reach end of little return big(i). 4. increment outer big.
+
+ft_substr.c
+copying a smaller substring from string and putting it in malloc
+
+ft_strtrim.c
+trims set of string from beginning and end of main string
+
+ft_strrchr.c
+return pointer to last value of char. config: 1.set i to strlen
+while exits check if equal and return pointer to int c.
+2.decrement 3.not successfull return NULL ptr
+
+ft_strncmp.c
+comparing strings. config: 1.if not equal and less than (n-1) increment
+return difference
+
+ft_strlcpy
+copies size bytes of src to dst. Is always null terminated unlike strcpy
+returns entire length of src that can be copied.
+config: 1.if size exists copy rueber and null terminate it 2.while src still
+exists increment counter and return it.
+
+ft_strlcat
+conccatenate src to dst.
+config: 1.check if size is less than or equal to dest_len then return size + src_len
+as the length of string. Prevents overflow. 2.increment till end of dst.
+3.while (size - 1) exits and not end of src copy values. 4.add NULL terminator
+5.return src + dst len.
+
+ft_strjoin
+join 2 strings together
+
+ft_strdup
+duplicate the string in malloc
+
+ft_strchr
+return pointer to first occurence of int c.
+config: 1.increment if not equal 2. return pointer if equal
+3.otherwise NULL pointer. !%256 to keep char within ASCII value
+
+ft_memset
+linked to bzero with self defining place holder int.
+
+ft_memmove
+difference to memcpy takes care of memory overlap
+
+ft_memcpy
+difference to memcmp only copying so no need for buffer.
+ config: 1.check if dest and src are NULL. 2.big condition i < n.
+3. assign value of src to dst nut typecast dest to char and both to unsigned.
+
+ft_memcmp
+similar to strncmp but uses compares memory rather than the string.
+strncmp used to compare strings that are null terminated and memcmp to compare
+blocks of memory that may not be null terminated.
+config: while same increment or else return difference under the big condition i < n.
+
+ft_memchr
+points to the first occurence of int/char (not the entire string) in the first n bytes of string
+config: 1. create duplicate and to search and modify string. 2. increment if different.
+3. return pointer if same.
+
+fT_isalnum
+checks whether current input is an alphabet or digit and either returns +nr if true
+and 0 if false. is an macro and locale dependent so can vary depending on locale setting.
+Macros are replaced by preprocessor - used as aliases. Not actual code. Can evaluate its arg
+multiple times. Better to use f() than macros especially if arg has side effects.
+
+ft_calloc
+memory buffer of n members and data type size. difference to malloc is that default
+initialization is 0. Config: 1. create *ptr and set it to malloc. 2. check NULL ptr.
+3.set malloc to bzero.
+
+ft_bzero
+assigns a NULL bite to the first n bytes of string pointed by void pointer.
+can also be used in creating calloc. Memset can be used to choose any value as place
+holder. Bzero is an obsolete f().
+
+ft_atoi
+searches for first string of integers in string. only works with one leading - sign.
+does not check over/underflow. Use case takes input from command line or config file
+where the input in form of string but need to be processed as integer.
+input as pointer to string cause string input itself is pointer.
+config: 1.skip special chars. 2.check for sign. 3.read integer.
+
+ft_calloc
+initialzes to 0
+
+ft_strdup
+duplicate a string
+
+ft_substr
+copy a part of string
+
+ft_strjoin
+join two strings
+
+ft_strtrim
+trim the end and beginning of string with set of characters
+
+ft_split
+split the string with delimiters
+
+ft_itoa
+converts integer input into character output
+
+ft_strmapi
+use function pointers and apply to every i in s[i]; returned the alterred
+function. Declaration of function happens outside of ft_strmapi
+
+ft_striteri
+same as ft_strmapi but as return value and external functs nothing
+
+ft_putchar_fd
+write function using fd as output value. no return
+
+ft_putstr_fd
+same as ft_putchar_fd but only with string.
+
+ft_putendl_fd
+same as ft_putstr_fd followed by newline
+
+ft_putnbr_fd
+like putnbr and outputs the integer to given file descriptor
+
+ft_lstnew
+creates a new node with content. The content to create the node with.
+return a new node. next initialized NULL.
+
+ft_lstadd_front
+adds the node new to beginning of list
+
+ft_lstsize
+return the nr. of nodes in a list n int. lst is the beginning.
